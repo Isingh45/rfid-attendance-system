@@ -1,74 +1,143 @@
-# RFID Attendance System
-
-An embedded RFID-based attendance tracking system developed using an Arduino Mega 2560, MFRC522 RFID reader, I2C LCD display, and microSD card storage.
+# Embedded RFID Attendance & Access Control System
 
 ## Overview
 
-This project automates attendance tracking by identifying authorized RFID cards, displaying user information on an LCD screen, and logging attendance events to a microSD card.
+This project implements an embedded RFID-based access control and attendance tracking system using an Arduino Mega 2560. The system authenticates users by reading RFID card UIDs, provides real-time feedback through a 16×2 I2C LCD display, and logs attendance records to a microSD card.
 
-The system demonstrates embedded-system integration involving RFID communication, SD card storage, LCD interfaces, and shared SPI bus management.
+The project demonstrates embedded hardware/software integration by combining RFID communication, SPI and I2C peripherals, modular firmware development, and real-time data logging into a reliable embedded system.
 
-## Features
+---
 
-* RFID-based user identification using MFRC522
-* LCD feedback displaying user information and access status
-* Attendance logging to microSD card
-* Serial Monitor debugging support
-* Utility programs for card programming, log viewing, and log deletion
+## Key Features
+
+* RFID-based user authentication using the MFRC522 RFID reader
+* Real-time LCD feedback displaying user information and access status
+* Attendance logging to a microSD card with user name and timestamp
 * Shared SPI bus management between RFID and SD card peripherals
+* Utility programs for RFID card programming, attendance log viewing, and log deletion
+* Serial Monitor support for debugging and system validation
 
-## Hardware Used
+---
+
+## System Architecture
+
+The system follows the workflow below:
+
+```text
+RFID Card
+      ↓
+MFRC522 RFID Reader
+      ↓
+Arduino Mega 2560
+      ↓
+UID Authentication
+      ↓
+LCD User Feedback
+      ↓
+Attendance Logging
+      ↓
+microSD Card Storage
+```
+
+The system integrates multiple communication interfaces while maintaining reliable RFID detection, LCD updates, and SD card logging.
+
+---
+
+## Design Methodology
+
+### Embedded System Development
+
+* Developed firmware using modular Arduino C/C++ programs
+* Implemented RFID authentication using unique card identifiers (UIDs)
+* Integrated LCD feedback and attendance logging into a unified embedded application
+* Organized the project into reusable utility programs for system maintenance and testing
+
+### Hardware Integration
+
+* Integrated the MFRC522 RFID reader, I2C LCD display, and SPI microSD card module
+* Managed multiple communication protocols across shared hardware resources
+* Implemented voltage-level conversion between the 5V Arduino Mega and the 3.3V RFID module
+
+### Verification & Debugging
+
+* Validated RFID authentication using authorized RFID cards
+* Verified attendance logging through CSV records stored on the microSD card
+* Used the Arduino Serial Monitor to debug RFID communication, SD card operations, and system behavior
+
+---
+
+## Technologies Used
 
 * Arduino Mega 2560
+* Embedded C/C++
 * MFRC522 RFID Reader
-* 16x2 I2C LCD Display
-* SPI-Compatible microSD Card Module
-* 8GB microSD Card
+* SPI Communication
+* I2C Communication
+* microSD Card Interface
+* EEPROM
+* Serial Monitor
+* Embedded Systems
+* Hardware/Software Integration
 
-## Communication Interfaces
-
-### SPI
-
-* MFRC522 RFID Reader
-* microSD Card Module
-
-### I2C
-
-* 16x2 LCD Display
-
-### Serial
-
-* Debugging and system validation
+---
 
 ## Repository Structure
 
 ```text
 images/
-report/
-presentation/
+    Hardware schematic
+
 source/
+    Modular Arduino source code
+    • keycard_test.ino
+    • read_file.ino
+    • del_file.ino
+    • set_name.ino
+
+report/
+    Final project report
+
+presentation/
+    Final project presentation
 ```
 
-## Key Engineering Challenges
+---
 
-* Integrating multiple peripherals across SPI and I2C communication protocols
-* Managing chip-select control for RFID and SD card devices sharing the same SPI bus
-* Resolving voltage-level compatibility between 5V Arduino logic and 3.3V RFID hardware
-* Implementing reliable attendance logging and system validation workflows
+## Engineering Challenges
 
-## Documentation
+* Managed shared SPI communication between the RFID reader and microSD card module using proper chip-select control
+* Resolved voltage compatibility between the 5V Arduino Mega and the 3.3V RFID reader using a resistor-based voltage divider
+* Developed modular firmware to simplify testing, debugging, and system maintenance
+* Validated reliable attendance logging through iterative hardware and software testing
 
-* Final Report: `/report`
-* Final Presentation: `/presentation`
-* Source Code: `/source`
+---
 
-## Skills Demonstrated
+## My Contributions
 
-* Embedded C/C++
-* RFID Integration
-* SPI Communication
-* I2C Communication
-* Serial Debugging
-* Hardware-Software Integration
-* Real-Time Data Logging
-* Embedded System Validation
+* Developed and tested embedded firmware for RFID authentication and attendance tracking
+* Assisted with hardware integration of the RFID reader, LCD display, and microSD card module
+* Contributed to SPI communication management and embedded system debugging
+* Implemented and validated attendance logging and utility programs
+* Assisted with project testing, documentation, and final presentation
+
+---
+
+## Project Outcome
+
+This project successfully demonstrated an embedded RFID-based attendance and access control system capable of authenticating users, displaying real-time feedback, and maintaining persistent attendance records through microSD storage.
+
+The project strengthened practical experience in embedded systems development, peripheral integration, SPI and I2C communication, firmware debugging, and hardware/software co-design.
+
+---
+
+## Academic Context
+
+**California State University, East Bay**
+
+**Embedded Systems Project**
+
+**Team Members**
+
+* Pierreline Jacob
+* Inderpal Singh
+* Sanjay
